@@ -1,9 +1,9 @@
 # elastest
 
-*Elastique REST API test*
-*September 2018*
-*Eric Delerue delerue_eric@hotmail.com*
-*https://github.com/EricDelerue/elastest*
+- *Elastique REST API test*
+- *September 2018*
+- *Eric Delerue delerue_eric@hotmail.com*
+- *https://github.com/EricDelerue/elastest*
 
 
 This RESTful API allows the user to 
@@ -17,13 +17,13 @@ Enpoints
 The following enpoints are available:
 
 Publishers
-• All publishers
+• All publishers:
 - /publishers/list
 • A specific publisher by ID:
 - /publishers/{id}
 	
 Authors
-• All authors
+• All authors:
 - /authors/list
 • A specific author by ID:
 - /authors/{id}
@@ -36,6 +36,7 @@ Books
 • Search books by keyword ( optional offset / limit ):
 - /books/search/{keyword}
 - /books/search/{keyword}/{offset}/{limit}
+	
 	
 Installation
 
