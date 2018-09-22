@@ -69,31 +69,64 @@ Dont forget to modify the configuration file with your values in:
 
     /api/elastest.api.v1.0.ini.php
 
-Edit the following lines in the bottom of the file "api.php":
+These are the main configuration options and their default value:
 
-    $config = new Config([
-        'username' => 'xxx',
-        'password' => 'xxx',
-        'database' => 'xxx',
-    ]);
+[version_info]
+- version_number = 1.0
+- version_stable = 1.0
+- last_updated = 05/09/2018
 
-These are all the configuration options and their default value between brackets:
+[development_db_info]
+- db_hostname = Hostname of the database server ("localhost", "127.0.01")
+- db_name = Database the connecting is made to (elastest)
+- db_user = Username of the user connecting to the database (no default)
+- db_password = Password of the user connecting to the database (no default)
+- db_port = TCP port of the database server (defaults to driver default 3306)
+- db_socket = 
 
-- "driver": "mysql"
-- "address": Hostname of the database server ("localhost", "127.0.01")
-- "port": TCP port of the database server (defaults to driver default)
-- "username": Username of the user connecting to the database (no default)
-- "password": Password of the user connecting to the database (no default)
-- "database": Database the connecting is made to (no default)
-- "cacheType": "TempFile" (default), "Redis", "Memcache" or "Memcached"
-- "cachePath": Path/address of the cache (defaults to system's "temp" directory)
-- "cacheTime": Number of seconds the cache is valid (10)
+[development_url_info]
+- api_base_url = https://127.0.0.1/elastique
+- api_base_directory = /api/
+- api_base_version = v1.0
+
+[production_db_info]
+- db_hostname = Hostname of the database server 
+- db_name = Database the connecting is made to (elastest)
+- db_user = Username of the user connecting to the database (no default)
+- db_password = Password of the user connecting to the database (no default)
+- db_port = TCP port of the database server (defaults to driver default 3306)
+- db_socket = 
+
+[production_url_info]
+- api_base_url = https://itineranda.com/elastest
+- api_base_directory = /api/
+- api_base_version = v1.0
+
+## Cache
+
+Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
+
+			$this->config = array_merge(array(  
+			    'request_timeout' => 10,   
+			    'csrf_token' => false,
+			    
+			    'cache' => true,     		    
+			    'cache_type' => "TempFile" (default) or "Memcache" or "Memcached",
+			    'cache_timeout' => 10,
+			    'cache_path' => C:\Users\Surface\xampp\htdocs\elastique\cache, 		
+			    	    
+			    'offset' => 0,
+			    'limit' => 50,    
+			                         
+			), $this->config);
 
 
 ## Code brief description	
 
 
 index.php
+
+Head of the API
 
 		$ElastestAPI = new ElastestAPI();
 
