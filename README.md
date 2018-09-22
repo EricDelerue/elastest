@@ -2,11 +2,11 @@
 
 *Elastique REST API test*
 
-/**
- * Elastest - September 2018
- * Eric Delerue delerue_eric@hotmail.com
- * https://github.com/EricDelerue/elastest
- **/
+*
+Elastest - September 2018
+Eric Delerue delerue_eric@hotmail.com
+https://github.com/EricDelerue/elastest
+*
 
 This RESTful API allows the user to 
 
