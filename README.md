@@ -2,12 +2,17 @@
 
 *Elastique REST API test*
 
+/**
+ * Elastest - September 2018
+ * Eric Delerue delerue_eric@hotmail.com
+ * https://github.com/EricDelerue/elastest
+ **/
 
-This RESTful API 
+This RESTful API allows the user to 
 
-- displays the list of all books, featured books, all authors and all publishers
-- allows the user to search through all books
-- and show a specific book, author or publisher by ID
+- display the list of all books, all featured books, all authors or all publishers
+- search through all books by KEYWORD
+- and get a specific book, author or publisher by ID
 
 Enpoints
 
@@ -33,3 +38,12 @@ Books
 • Search books by keyword ( optional offset / limit ):
 - /books/search/{keyword}
 - /books/search/{keyword}/{offset}/{limit}
+	
+Installation
+
+
+
+
+
+How it works?	
+	
