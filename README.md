@@ -1,6 +1,6 @@
-# elastest
+# elastest (solution one)
 
-- *Elastique REST API test*
+- *Elastique REST API test v1*
 - *September 2018*
 - *Eric Delerue delerue_eric@hotmail.com*
 - *https://github.com/EricDelerue/elastest*
@@ -16,23 +16,26 @@ Enpoints
 
 The following enpoints are available:
 
-Publishers
+Publishers 
+
 • All publishers:
 - /publishers/list
 • A specific publisher by ID:
 - /publishers/{id}
 	
-Authors
+Authors 
+
 • All authors:
 - /authors/list
 • A specific author by ID:
 - /authors/{id}
 
-Books
+Books 
+
 • All featured/highlighted items:
 - /books/highlighted
 • Get a specific book by ID:
-- /books/{id}
+- /books/{id} 
 • Search books by keyword ( optional offset / limit ):
 - /books/search/{keyword}
 - /books/search/{keyword}/{offset}/{limit}
