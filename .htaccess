@@ -1,0 +1,50 @@
+Options +FollowSymLinks
+
+# Disable directory browsing
+Options All -Indexes
+
+RewriteEngine on
+
+# Pass the default character set
+AddDefaultCharset utf-8
+#DefaultLanguage en-US
+
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+
+# Prevent folder listing
+IndexIgnore *
+
+<IfModule mod_rewrite.c>
+
+# Tell PHP that the mod_rewrite module is ENABLED.
+SetEnv HTTP_MOD_REWRITE On                        
+                                                  
+RewriteEngine on      
+
+# The file with the specified name in the browser doesn't exist, or the directory in the browser doesn't exist, so procede to the rewrite rule below  
+# RewriteCond basically means "execute the next RewriteRule only if this is true"     
+                     
+RewriteCond %{REQUEST_FILENAME} !-f               
+RewriteCond %{REQUEST_FILENAME} !-d   
+
+# QSA means that if there's a query string passed with the original URL, it will be appended to the rewrite
+# L means if the rule matches, don't process any more RewriteRules below this one.
+# Use of the [NC] flag causes the RewriteRule to be matched in a case-insensitive manner.
+
+RewriteRule ^(.*)$  api/v1.0/index.php?request=$1 [QSA,NC,L]
+RewriteRule ^(.*)/$ api/v1.0/index.php?request=$1 [QSA,NC,L]
+
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+<ifModule mod_headers.c> 
+Header set Connection keep-alive 
+</ifModule>
