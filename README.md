@@ -45,7 +45,7 @@ Books
 ## Requirements
 
   - PHP 7.0 or higher with PDO drivers for MySQL
-  - MySQL 5.6 / MariaDB 10.0 or higher for spatial features in MySQL
+  - MySQL 5.6 / MariaDB 10.0 or higher
 
 ## Installation
 
@@ -91,4 +91,36 @@ These are all the configuration options and their default value between brackets
 
 
 ## Code brief description	
+
+
+index.php
+
+		$ElastestAPI = new ElastestAPI();
+
+		$ElastestAPI->handleHttpRequest(  HttpRequest::buildRequestFromGlobals()  )->send();
+
+ElastestAPI.class.php
+
+		public function handleHttpRequest() {
+
+				$this->getHttpRequestController()->handleHttpRequest($request, $this->response);
+				return $this->response;
+		}
 	
+HttpRequestController.class.php
+
+		public function handleHttpRequest (HttpRequestInterface $request, HttpResponseInterface $response) {
+		
+				$this->getResourceController()->handleResourceRequest ($this->resourceType, $this->config, $this->response)
+				return $this->response;
+				
+		}
+	
+ResourceController.class.php
+
+		public function handleResourceRequest(ResourceTypeInterface $resourceType, HttpResponseInterface $response) {
+
+		// Get data from Cache or Database
+		// Build the response 
+
+		}
