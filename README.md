@@ -5,6 +5,7 @@
 - *Eric Delerue delerue_eric@hotmail.com*
 - *https://github.com/EricDelerue/elastest*
 
+## What is it about?
 
 This RESTful API allows the user to 
 
@@ -40,12 +41,54 @@ Books
 - /books/search/{keyword}
 - /books/search/{keyword}/{offset}/{limit}
 	
-	
-Installation
+
+## Requirements
+
+  - PHP 7.0 or higher with PDO drivers for MySQL
+  - MySQL 5.6 / MariaDB 10.0 or higher for spatial features in MySQL
+
+## Installation
+
+Upload "elastest" content in an "name_of_your_choice" directory somewhere on your web server.
+
+Modify the configuration file with your values in:
+
+    /name_of_your_choice/api/elastest.api.v1.0.ini.php
+
+Run the installer file
+
+    /name_of_your_choice/installer.php 
+    
+Test the script by opening the following URL:
+
+    http://localhost/name_of_your_choice/books/list or http://your.web.server/name_of_your_choice/books/list
+
+## Configuration
+
+Dont forget to modify the configuration file with your values in:
+
+    /api/elastest.api.v1.0.ini.php
+
+Edit the following lines in the bottom of the file "api.php":
+
+    $config = new Config([
+        'username' => 'xxx',
+        'password' => 'xxx',
+        'database' => 'xxx',
+    ]);
+
+These are all the configuration options and their default value between brackets:
+
+- "driver": "mysql"
+- "address": Hostname of the database server ("localhost", "127.0.01")
+- "port": TCP port of the database server (defaults to driver default)
+- "username": Username of the user connecting to the database (no default)
+- "password": Password of the user connecting to the database (no default)
+- "database": Database the connecting is made to (no default)
+- "cacheType": "TempFile" (default), "Redis", "Memcache" or "Memcached"
+- "cachePath": Path/address of the cache (defaults to system's "temp" directory)
+- "cacheTime": Number of seconds the cache is valid (10)
 
 
-
-
-
-How it works?	
+## Code brief description	
 	
