@@ -101,18 +101,22 @@ index.php
 
 ElastestAPI.class.php
 
-		public function handleHttpRequest() {
+		public function handleHttpRequest(HttpRequestInterface $request, HttpResponseInterface $response) {
 
-				$this->getHttpRequestController()->handleHttpRequest($request, $this->response);
-				return $this->response;
+				$this->getHttpRequestController()->handleHttpRequest($request, $response);
+				return $response;
 		}
 	
 HttpRequestController.class.php
 
 		public function handleHttpRequest (HttpRequestInterface $request, HttpResponseInterface $response) {
-		
-				$this->getResourceController()->handleResourceRequest ($this->resourceType, $this->config, $this->response)
-				return $this->response;
+
+				// Check request data
+				// Build the resource type object 
+				// Send to Resource Controller
+
+				$this->getResourceController()->handleResourceRequest ($resourceType, $config, $response)
+				return $response;
 				
 		}
 	
@@ -122,5 +126,6 @@ ResourceController.class.php
 
 		// Get data from Cache or Database
 		// Build the response 
+		// Send the response object ( $ElastestAPI->handleHttpRequest(  HttpRequest::buildRequestFromGlobals()  )->send(); )
 
 		}
