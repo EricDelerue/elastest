@@ -62,9 +62,9 @@ Modify the configuration file with your values in:
 
     /name_of_your_choice/api/elastest.api.v1.0.ini.php
 
-Run the installer file
+Create a database called: `elastest` and execute the following sql file inside it:
 
-    /name_of_your_choice/installer.php 
+    /name_of_your_choice/elastest.sql 
     
 Test the script by opening the following URL:
 
