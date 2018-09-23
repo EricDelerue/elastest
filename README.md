@@ -19,36 +19,36 @@ The following enpoints are available:
 
 Publishers 
 
-All publishers:
-- /publishers/list
+- All publishers:
+		/publishers/list
 
-A specific publisher by ID:
-- /publishers/{id}
+- A specific publisher by ID:
+		/publishers/{id}
 	
 Authors 
 
-All authors:
-- /authors/list
+- All authors:
+		/authors/list
 
-A specific author by ID:
-- /authors/{id}
+- A specific author by ID:
+		/authors/{id}
 
 Books 
 
-All featured/highlighted items:
-- /books/highlighted
+- All featured/highlighted items:
+		/books/highlighted
 
-Get a specific book by ID:
-- /books/{id} 
+- Get a specific book by ID:
+		/books/{id} 
 	
-Search books by keyword ( optional offset / limit ):
-- /books/search/{keyword} 
-- /books/search/{keyword}/{offset}/{limit}
+- Search books by keyword ( optional offset / limit ):
+		/books/search/{keyword} 
+		/books/search/{keyword}/{offset}/{limit}
 	
 
 ## Requirements
 
-  - PHP 7.0 or higher with PDO drivers for MySQL
+  - PHP 7.2 with PDO drivers for MySQL
   - Apache server
   - MySQL 5.6 / MariaDB 10.0 or higher
 
@@ -83,7 +83,7 @@ The request $_REQUEST['request'] contains endpoint/id or endpoint/verb/ or endpo
 
 Dont forget to modify the configuration file with your values in:
 
-    /api/elastest.api.v1.0.ini.php
+    /name_of_your_choice/api/elastest.api.v1.0.ini.php
 
 These are the main configuration options and their default value:
 
@@ -114,14 +114,14 @@ These are the main configuration options and their default value:
 - db_socket = 
 
 [production_url_info]
-- api_base_url = https://itineranda.com/elastest
+- api_base_url = https://ericdelerue.com/elastest
 - api_base_directory = /api/
 - api_base_version = v1.0
 
 Open these two files and modify with your values:
 
-		/api/v1.0/development.php
-		/api/v1.0/production.php
+		/name_of_your_choice/api/v1.0/development.php
+		/name_of_your_choice/api/v1.0/production.php
 
 
 
