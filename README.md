@@ -19,29 +19,29 @@ The following enpoints are available:
 
 Publishers 
 
-• All publishers:
+All publishers:
 - /publishers/list
 
-• A specific publisher by ID:
+A specific publisher by ID:
 - /publishers/{id}
 	
 Authors 
 
-• All authors:
+All authors:
 - /authors/list
 
-• A specific author by ID:
+A specific author by ID:
 - /authors/{id}
 
 Books 
 
-• All featured/highlighted items:
+All featured/highlighted items:
 - /books/highlighted
 
-• Get a specific book by ID:
+Get a specific book by ID:
 - /books/{id} 
 	
-• Search books by keyword ( optional offset / limit ):
+Search books by keyword ( optional offset / limit ):
 - /books/search/{keyword} 
 - /books/search/{keyword}/{offset}/{limit}
 	
@@ -146,8 +146,7 @@ Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
 
 Notable: \Elastest\Cache\TempFileCache.class.php
 
-The system method used for caching is faster caching than Redis/Memcache/APC in PHP & HHVM.
-This method is faster than Redis, Memcache, APC, and other PHP caching solutions because all those solutions must serialize and unserialize objects, generally using PHP’s serialize or json_encode functions. 
+The method used for caching is faster than Redis, Memcache, APC, and other PHP caching solutions because all those solutions must serialize and unserialize objects, generally using PHP’s serialize or json_encode functions. 
 By storing PHP objects - not string - in file cache memory across requests, we can avoid serialization completely.
 
 
