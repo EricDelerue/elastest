@@ -21,6 +21,7 @@ Publishers
 
 • All publishers:
 - /publishers/list
+
 • A specific publisher by ID:
 - /publishers/{id}
 	
@@ -28,6 +29,7 @@ Authors
 
 • All authors:
 - /authors/list
+
 • A specific author by ID:
 - /authors/{id}
 
@@ -35,10 +37,12 @@ Books
 
 • All featured/highlighted items:
 - /books/highlighted
+
 • Get a specific book by ID:
 - /books/{id} 
+	
 • Search books by keyword ( optional offset / limit ):
-- /books/search/{keyword}
+- /books/search/{keyword} 
 - /books/search/{keyword}/{offset}/{limit}
 	
 
@@ -70,7 +74,7 @@ Test the script by opening the following URL:
 
 The request $_REQUEST['request'] contains endpoint/id or endpoint/verb/ or endpoint/search/keyword/
 
-.htaccess puts everything after /elastique/ directory inside querystring "request" key
+.htaccess puts everything after /name_of_your_choice/ directory inside the querystring "request" key
 
 		RewriteRule ^(.*)$  api/v1.0/index.php?request=$1 [QSA,NC,L]
 		RewriteRule ^(.*)/$ api/v1.0/index.php?request=$1 [QSA,NC,L]
@@ -114,6 +118,14 @@ These are the main configuration options and their default value:
 - api_base_directory = /api/
 - api_base_version = v1.0
 
+Open these two files and modify with your values:
+
+		/api/v1.0/development.php
+		/api/v1.0/production.php
+
+
+
+
 ## Cache
 
 Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
@@ -132,7 +144,7 @@ Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
 			                         
 			), $this->config);
 
-Note: TempFileCache.class.php
+Notable: \Elastest\Cache\TempFileCache.class.php
 
 The system method used for caching is faster caching than Redis/Memcache/APC in PHP & HHVM.
 This method is faster than Redis, Memcache, APC, and other PHP caching solutions because all those solutions must serialize and unserialize objects, generally using PHP’s serialize or json_encode functions. 
@@ -192,8 +204,8 @@ ResourceController.class.php
 
 		public function handleResourceRequest(ResourceTypeInterface $resourceType, HttpResponseInterface $response) {
 
-		// Get data from Cache or Database
-		// Build the response 
-		// Send the response object ( $ElastestAPI->handleHttpRequest(  HttpRequest::buildRequestFromGlobals()  )->send(); )
+				// Get data from Cache or Database
+				// Build the response 
+				// Send the response object ( $ElastestAPI->handleHttpRequest(  HttpRequest::buildRequestFromGlobals()  )->send(); )
 
 		}
