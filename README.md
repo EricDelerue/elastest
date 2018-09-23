@@ -45,11 +45,14 @@ Books
 ## Requirements
 
   - PHP 7.0 or higher with PDO drivers for MySQL
+  - Apache server
   - MySQL 5.6 / MariaDB 10.0 or higher
 
 ## Installation
 
-Upload "elastest" content in an "name_of_your_choice" directory somewhere on your web server.
+Upload "elastest" content in a "name_of_your_choice" directory somewhere on your web server.
+
+Verify that .htaccess file is in /name_of_your_choice/ 
 
 Modify the configuration file with your values in:
 
@@ -62,6 +65,15 @@ Run the installer file
 Test the script by opening the following URL:
 
     http://localhost/name_of_your_choice/books/list or http://your.web.server/name_of_your_choice/books/list
+
+## .htaccess
+
+The request $_REQUEST['request'] contains endpoint/id or endpoint/verb/ or endpoint/search/keyword/
+
+.htaccess puts everything after /elastique/ directory inside querystring "request" key
+
+		RewriteRule ^(.*)$  api/v1.0/index.php?request=$1 [QSA,NC,L]
+		RewriteRule ^(.*)/$ api/v1.0/index.php?request=$1 [QSA,NC,L]
 
 ## Configuration
 
@@ -113,12 +125,18 @@ Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
 			    'cache' => true,     		    
 			    'cache_type' => "TempFile" (default) or "Memcache" or "Memcached",
 			    'cache_timeout' => 10,
-			    'cache_path' => C:\Users\Surface\xampp\htdocs\elastique\cache, 		
+			    'cache_path' => C:\Path\To\Your\Cache\Directory\cache, 		
 			    	    
 			    'offset' => 0,
 			    'limit' => 50,    
 			                         
 			), $this->config);
+
+Note: TempFileCache.class.php
+
+The system method used for caching is faster caching than Redis/Memcache/APC in PHP & HHVM.
+This method is faster than Redis, Memcache, APC, and other PHP caching solutions because all those solutions must serialize and unserialize objects, generally using PHP’s serialize or json_encode functions. 
+By storing PHP objects - not string - in file cache memory across requests, we can avoid serialization completely.
 
 
 ## Code brief description	
@@ -134,12 +152,28 @@ Head of the API
 
 ElastestAPI.class.php
 
+This class manage the API configuration . This class will act as a wrapper for all of the custom endpoints that our API will be using. 
+ 
+The class will pass the request information on to a method of the class HttpController to actually perform the work. 
+ 
+HttpController will: 
+
+- take in our request, 
+- grab the data provided in the headers or in the URI,
+- grab the endpoint from the "request" key in the query string (see .htaccess), 
+- detect the HTTP method (GET, HEAD, POST, PUT, PATCH, OPTIONS, DELETE) and 
+- check and assemble any additional data provided in the header or in the URI. 
+- pass the data ResourceController. 
+
+It then return to this class which will handle the HTTP response and send it back to the client.
+
 		public function handleHttpRequest(HttpRequestInterface $request, HttpResponseInterface $response) {
 
 				$this->getHttpRequestController()->handleHttpRequest($request, $response);
 				return $response;
 		}
 	
+
 HttpRequestController.class.php
 
 		public function handleHttpRequest (HttpRequestInterface $request, HttpResponseInterface $response) {
@@ -153,6 +187,7 @@ HttpRequestController.class.php
 				
 		}
 	
+
 ResourceController.class.php
 
 		public function handleResourceRequest(ResourceTypeInterface $resourceType, HttpResponseInterface $response) {
