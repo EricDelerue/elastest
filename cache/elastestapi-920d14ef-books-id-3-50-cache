@@ -1,0 +1,12 @@
+<?php $value = array (
+  'id' => '3',
+  'title' => 'Once upon a time in the south',
+  'description' => 'Once upon a time in the south',
+  'isbn' => '123456789',
+  'cover_url' => '',
+  'a_id' => '3',
+  'first_name' => 'Eric',
+  'last_name' => 'Delerue',
+  'p_id' => '2',
+  'name' => 'Ink salad',
+);

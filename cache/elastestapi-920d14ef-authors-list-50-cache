@@ -1,0 +1,23 @@
+<?php $value = array (
+  'authors' => 
+  array (
+    0 => 
+    array (
+      'id' => '1',
+      'first_name' => 'Ingeborg',
+      'last_name' => 'Pos',
+    ),
+    1 => 
+    array (
+      'id' => '2',
+      'first_name' => 'Patrick',
+      'last_name' => 'Welling',
+    ),
+    2 => 
+    array (
+      'id' => '3',
+      'first_name' => 'Eric',
+      'last_name' => 'Delerue',
+    ),
+  ),
+);

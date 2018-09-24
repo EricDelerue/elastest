@@ -1,0 +1,15 @@
+<?php $value = array (
+  'publishers' => 
+  array (
+    0 => 
+    array (
+      'id' => '1',
+      'name' => 'Elastique',
+    ),
+    1 => 
+    array (
+      'id' => '2',
+      'name' => 'Ink salad',
+    ),
+  ),
+);

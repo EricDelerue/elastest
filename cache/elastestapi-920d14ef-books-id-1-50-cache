@@ -1,0 +1,12 @@
+<?php $value = array (
+  'id' => '1',
+  'title' => 'Dead or Scrum',
+  'description' => 'Dead or Scrum',
+  'isbn' => '0',
+  'cover_url' => '',
+  'a_id' => '1',
+  'first_name' => 'Ingeborg',
+  'last_name' => 'Pos',
+  'p_id' => '1',
+  'name' => 'Elastique',
+);

@@ -1,0 +1,62 @@
+<?php $value = array (
+  'books' => 
+  array (
+    0 => 
+    array (
+      'id' => '1',
+      'title' => 'Dead or Scrum',
+      'description' => 'Dead or Scrum',
+      'isbn' => '0',
+      'cover_url' => '',
+      'author' => 
+      array (
+        'id' => '1',
+        'first_name' => 'Ingeborg',
+        'last_name' => 'Pos',
+      ),
+      'publisher' => 
+      array (
+        'id' => '1',
+        'name' => 'Elastique',
+      ),
+    ),
+    1 => 
+    array (
+      'id' => '2',
+      'title' => 'Metallica applied to PHP',
+      'description' => 'Metallica applied to PHP',
+      'isbn' => '0',
+      'cover_url' => '',
+      'author' => 
+      array (
+        'id' => '2',
+        'first_name' => 'Patrick',
+        'last_name' => 'Welling',
+      ),
+      'publisher' => 
+      array (
+        'id' => '1',
+        'name' => 'Elastique',
+      ),
+    ),
+    2 => 
+    array (
+      'id' => '3',
+      'title' => 'Once upon a time in the south',
+      'description' => 'Once upon a time in the south',
+      'isbn' => '123456789',
+      'cover_url' => '',
+      'author' => 
+      array (
+        'id' => '3',
+        'first_name' => 'Eric',
+        'last_name' => 'Delerue',
+      ),
+      'publisher' => 
+      array (
+        'id' => '2',
+        'name' => 'Ink salad',
+      ),
+    ),
+  ),
+);
