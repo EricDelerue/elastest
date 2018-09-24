@@ -10,7 +10,7 @@ if(DEBUG){
 
 ini_set("display_errors", 1);
 ini_set("log_errors", 1);
-ini_set("error_log", "C:/Users/Surface/xampp/htdocs/elastique/logs/php-errors.log");
+ini_set("error_log", "/var/www/html/dev.ericdelerue.com/elastique/logs/php-errors.log");
   
 $script_timezone='UTC';
   
@@ -44,40 +44,46 @@ if(!isset($_SERVER['DOCUMENT_ROOT'])){
   }                                                                                                                                                
 }                                                                                                                                                  
 	
-define('ELASTIQUE_DIRECTORY', $_SERVER['DOCUMENT_ROOT'].'/elastique');  // C:/Users/Surface/xampp/htdocs/elastique
+define('ELASTIQUE_DIRECTORY', $_SERVER['DOCUMENT_ROOT'].'elastique');
 //echo "ELASTIQUE_DIRECTORY: ".ELASTIQUE_DIRECTORY."<br>\n";
 	
-define('ELASTEST_DIRECTORY', ELASTIQUE_DIRECTORY.'/Elastest');  // C:/Users/Surface/xampp/htdocs/elastique
+define('ELASTEST_DIRECTORY', ELASTIQUE_DIRECTORY.'/api/v1.0');
 //echo "ELASTEST_DIRECTORY: ".ELASTEST_DIRECTORY."<br>\n";
 
-define('PUBLIC_URL', 'http://127.0.0.1/elastique/'); 
+define('PUBLIC_URL', 'http://dev.ericdelerue.com/elastique/'); 
 
-function loadClassWithNamespaces($className) {     
+
+// PSR-0 Class loader
+function loadClassWithNamespaces(?string $className) : void {     
+		
+		/* For PSR-4 Class loader
+    return array(
+    'Elastest\\Api\\'				  => array(ELASTEST_DIRECTORY . '/Api/'),
+    'Elastest\\Config\\' 			=> array(ELASTEST_DIRECTORY . '/Config/'),
+    'Elastest\\Controllers\\' => array(ELASTEST_DIRECTORY . '/Controllers/'),
+    'Elastest\\Exceptions\\' 	=> array(ELASTEST_DIRECTORY . '/Exceptions/'),
+    'Elastest\\Http\\' 				=> array(ELASTEST_DIRECTORY . '/Http/'),
+    'Elastest\\Storage\\' 		=> array(ELASTEST_DIRECTORY . '/Storage/'),
+    'Elastest\\Utils\\' 		=> array(ELASTEST_DIRECTORY . '/Utils/')
+    );
+	  */
 	                                                        
     $fileName = '';                                                                          
     $namespace = '';  
+                                                                                       
+    // Sets the include path as the "root" directory                                           
+    $includePath = ELASTEST_DIRECTORY;                              
+    //echo "loadClassWithNamespaces includePath: ".$includePath."<br>\n";
     
-    echo "loadClass className: ".$className."<br>\n";                                                                       
-                                                                                             
-    // Sets the include path as the "src" directory                                          
-    //$includePath = dirname(__FILE__).DIRECTORY_SEPARATOR.'src';  
-    $includePath = ELASTIQUE_DIRECTORY;                              
-    echo "loadClass includePath: ".$includePath."<br>\n";
-                                                                                             
-    if (false !== ($lastNsPos = strripos($className, '\\'))) {                               
-        $namespace = substr($className, 0, $lastNsPos);                                      
-        $className = substr($className, $lastNsPos + 1);                                     
-        $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
-    }       
+    $parts = explode('\\', $className);
+    $class = array_pop($parts);
+    //echo "loadClassWithNamespaces class: ".$class."<br>\n";
+    $folder = array_pop($parts);   
+    //echo "loadClassWithNamespaces folder: ".$folder."<br>\n";
     
-    echo "loadClass namespace: ".$namespace."<br>\n";
-    echo "loadClass className: ".$className."<br>\n";
-    echo "loadClass fileName: ".$fileName."<br>\n";
-                                                                                     
-    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.class.php';   
-    echo "loadClass fileName: ".$fileName."<br>\n";              
-    $fullFileName = $includePath . DIRECTORY_SEPARATOR . $fileName;          
-    echo "loadClass fullFileName: ".$fullFileName."<br>\n";                
+    $fileName .= $class . '.class.php';   
+    $fullFileName = $includePath . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $fileName;
+    //echo "loadClassWithNamespaces fullFileName: ".$fullFileName."<br>\n";  
                                                                                              
     if (file_exists($fullFileName)) {                                                        
         require $fullFileName;                                                               

@@ -28,10 +28,10 @@ cache_timeout = 10
 cache_path = C:\Users\Surface\xampp\htdocs\elastique\cache 
 
 [production_db_info]
-db_hostname = ericdelerue.com
+db_hostname = localhost
 db_name = elastest
-db_user = 
-db_password = 
+db_user = eric
+db_password = biddicchia
 db_port = 3306
 db_socket = 
 
@@ -44,4 +44,4 @@ api_base_version = v1.0
 cache_enabled = true     		    
 cache_type = TempFile
 cache_timeout = 10
-cache_path = C:\Users\Surface\xampp\htdocs\elastique\cache 
+cache_path = /var/www/html/dev.ericdelerue.com/elastique/cache 

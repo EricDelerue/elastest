@@ -364,10 +364,9 @@ class Pdo implements BooksInterface,
         $stmt = $this->connection->prepare('SELECT 
         '.$this->config['authors_table'].'.id, '.$this->config['authors_table'].'.first_name, '.$this->config['authors_table'].'.last_name 
         FROM '.$this->config['authors_table'].'         
-        ORDER BY '.$this->config['authors_table'].'.id ASC 
         WHERE '.$this->config['authors_table'].'.id = :author_id  
+        ORDER BY '.$this->config['authors_table'].'.id ASC         
         LIMIT 1;');
-        
         
         $stmt->execute(compact('author_id'));
 
@@ -439,8 +438,8 @@ class Pdo implements BooksInterface,
         $stmt = $this->connection->prepare('SELECT 
         '.$this->config['publishers_table'].'.id, '.$this->config['publishers_table'].'.name  
         FROM '.$this->config['publishers_table'].'         
-        ORDER BY '.$this->config['publishers_table'].'.id ASC 
         WHERE '.$this->config['publishers_table'].'.id = :publisher_id  
+        ORDER BY '.$this->config['publishers_table'].'.id ASC         
         LIMIT 1;');
         
         
