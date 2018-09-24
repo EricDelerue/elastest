@@ -14,6 +14,7 @@ use \Elastest\Exceptions\InvalidArgumentException;
 
 class Config {
     
+		private $config;
 		
 		private $format = 'ini';	
 		
@@ -64,23 +65,33 @@ class Config {
 						$this->api_configuration_array = parse_ini_file($this->api_configuration_ini_file, true);
 
 				}
+				
 						        	
-				$this->db_hostname = $this->api_configuration_array['development_db_info']['db_hostname'];
-				$this->db_name = $this->api_configuration_array['development_db_info']['db_name'];
-				$this->db_user = $this->api_configuration_array['development_db_info']['db_user'];
-				$this->db_password = $this->api_configuration_array['development_db_info']['db_password'];
-				$this->db_port = $this->api_configuration_array['development_db_info']['db_port'];
-				$this->db_socket = $this->api_configuration_array['development_db_info']['db_socket'];
+				$this->db_hostname = $this->api_configuration_array[ENVIRONMENT.'_db_info']['db_hostname'];
+				$this->db_name = $this->api_configuration_array[ENVIRONMENT.'_db_info']['db_name'];
+				$this->db_user = $this->api_configuration_array[ENVIRONMENT.'_db_info']['db_user'];
+				$this->db_password = $this->api_configuration_array[ENVIRONMENT.'_db_info']['db_password'];
+				$this->db_port = $this->api_configuration_array[ENVIRONMENT.'_db_info']['db_port'];
+				$this->db_socket = $this->api_configuration_array[ENVIRONMENT.'_db_info']['db_socket'];
 				
 				$this->dsn = "mysql:dbname=$this->db_name;host=$this->db_hostname;port=$this->db_port;socket=$this->db_socket";
 							
-				$this->api_configuration_array['development_db_info'] = array_merge(
+				$this->api_configuration_array[ENVIRONMENT.'_db_info'] = array_merge(
 				array('dsn' => $this->dsn, 
 				      'username' => $this->db_user, 
 				      'password' => $this->db_password), 
-				$this->api_configuration_array['development_db_info']
+				$this->api_configuration_array[ENVIRONMENT.'_db_info']
 				);
-        
+				
+				$this->config = array();
+				$this->config['db_info'] = $this->api_configuration_array[ENVIRONMENT.'_db_info'];
+				$this->config['cache_info'] = $this->api_configuration_array[ENVIRONMENT.'_cache_info'];
+				$this->config['url_info'] = $this->api_configuration_array[ENVIRONMENT.'_url_info'];
+				/*			 
+				echo "config<pre>";
+				print_r($this->config);  
+				echo "</pre>";                                                        
+	      */        
 		}
 		
 		public static function getInstance(){
@@ -111,20 +122,23 @@ class Config {
 
 				}
 									
-				return $this->api_configuration_array;
+				//return $this->api_configuration_array;
+				return $this->config;
 		
 		}
 		
 		public function getConfigValue($key) {
 								
-				if (!isset($this->api_configuration_array[$key])) {
+				//if (!isset($this->api_configuration_array[$key])) {
+				if (!isset($this->config[$key])) {
 						
 						$this->errors = array('error' => 400, 'title' => "Key not in config array.", 'description' => "Key $key not in config array. Please verify and try again.", "script" => "Config.class.php", "line" => __LINE__);	
 						throw new InvalidArgumentException("Key not in config array.", 400, null, $this->errors);
 
 				}
 				
-				return $this->api_configuration_array[$key];
+				//return $this->api_configuration_array[$key];
+				return $this->config[$key];
 			
 		}
 		

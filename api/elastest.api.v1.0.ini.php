@@ -21,6 +21,12 @@ api_base_url = https://127.0.0.1/elastique
 api_base_directory = /api/
 api_base_version = v1.0
 
+[development_cache_info]
+cache_enabled = true   		    
+cache_type = TempFile
+cache_timeout = 10
+cache_path = C:\Users\Surface\xampp\htdocs\elastique\cache 
+
 [production_db_info]
 db_hostname = ericdelerue.com
 db_name = elastest
@@ -33,3 +39,9 @@ db_socket =
 api_base_url = https://ericdelerue.com/elastique
 api_base_directory = /api/
 api_base_version = v1.0
+
+[production_cache_info]
+cache_enabled = true     		    
+cache_type = TempFile
+cache_timeout = 10
+cache_path = C:\Users\Surface\xampp\htdocs\elastique\cache 

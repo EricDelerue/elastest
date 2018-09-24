@@ -171,10 +171,10 @@ class HttpRequestController implements HttpRequestControllerInterface,
 			    'request_timeout' => 10,   
 			    'csrf_token' => false,
 			    'default_resource' => 'books',
-			    'cache' => true,     
+			    /*'cache' => true,     
 			    'cache_timeout' => 3600, 			    
 			    'offset' => 0,
-			    'limit' => 50,                         
+			    'limit' => 50,  */                       
 		), $config);   
 
 	}

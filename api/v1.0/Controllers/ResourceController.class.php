@@ -57,10 +57,10 @@ class ResourceController implements ResourceControllerInterface {
             'www_realm' => 'Service',
         ), $config);
 
-		    $this->cache        = (bool) $this->config['cache'];    
-				$this->cacheType    = (string) $this->config['cache_type'];    
-				$this->cacheTimeout = (int) $this->config['cache_timeout'];     
-				$this->cachePath    = (string) $this->config['cache_path'];    
+		    $this->cache        = (bool) $this->config['cache_info']['cache_enabled'];    
+				$this->cacheType    = (string) $this->config['cache_info']['cache_type'];    
+				$this->cacheTimeout = (int) $this->config['cache_info']['cache_timeout'];     
+				$this->cachePath    = (string) $this->config['cache_info']['cache_path'];    
 				        
         $this->route = $route;
 
@@ -147,9 +147,9 @@ class ResourceController implements ResourceControllerInterface {
          * TempFile or No Cache
          */
 	      $this->cacheController = CacheFactory::factory(
-					     $this->config['cache_type'], 
+					     $this->config['cache_info']['cache_type'], 
 					     $this->route, // Use to build the key of the request
-					     $this->config
+					     $this->config['cache_info']
 					     );
 
 				// try retrieving $resourceData from cache

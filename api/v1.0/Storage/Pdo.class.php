@@ -42,7 +42,7 @@ class Pdo implements BooksInterface,
      **/
 	  public function __construct(array $config = array(), /* $tables = array(), */ array $options = array()){
 	  	
-	  	  $connection = $config[ENVIRONMENT . '_db_info'];
+	  	  $connection = $config['db_info'];
 									
 				if (!$connection instanceof \PDO) {    
 					  

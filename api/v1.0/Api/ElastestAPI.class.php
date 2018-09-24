@@ -109,10 +109,6 @@ class ElastestAPI extends Config { // Config is in namespace \Elastest\Config\
 			$this->config = array_merge(array(  
 			    'request_timeout' => 10,   
 			    'csrf_token' => false,
-			    'cache' => true,     		    
-			    'cache_type' => 'TempFile', // (default) or 'No',
-			    'cache_timeout' => 10,
-			    'cache_path' => 'C:\Users\Surface\xampp\htdocs\elastique\cache', 
 			    'offset' => 0,
 			    'limit' => 50,                         
 			), $this->config);
