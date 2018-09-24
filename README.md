@@ -238,7 +238,7 @@ The directories structure of the api is the following:
 
 /name_of_your_choice/cache/ 								  -> will contain the cached responses 
 
-/name_of_your_choice/errors/ 								  -> will contain the errors log file 
+/name_of_your_choice/logs/ 								  -> will contain the errors log file 
   
 /name_of_your_choice/api/  
 
@@ -273,5 +273,5 @@ Modify the errors directory path in /name_of_your_choice/api/v1.0/development.ph
 
 		ini_set("display_errors", 1);
 		ini_set("log_errors", 1);
-		ini_set("error_log", "Path/To/Errors/Directory/php-errors.log");
+		ini_set("error_log", "Path/To/Errors/Directory/logs/php-errors.log");
 		  

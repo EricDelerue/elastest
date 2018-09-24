@@ -10,7 +10,7 @@ if(DEBUG){
 
 ini_set("display_errors", 1);
 ini_set("log_errors", 1);
-ini_set("error_log", "C:/Users/Surface/xampp/htdocs/elastique/errors/php-errors.log");
+ini_set("error_log", "C:/Users/Surface/xampp/htdocs/elastique/logs/php-errors.log");
   
 $script_timezone='UTC';
   
