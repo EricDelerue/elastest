@@ -20,28 +20,35 @@ The following enpoints are available:
 Publishers 
 
 - All publishers:
+
 		/publishers/list
 
 - A specific publisher by ID:
+
 		/publishers/{id}
 	
 Authors 
 
 - All authors:
+
 		/authors/list
 
 - A specific author by ID:
+
 		/authors/{id}
 
 Books 
 
 - All featured/highlighted items:
+
 		/books/highlighted
 
 - Get a specific book by ID:
+
 		/books/{id} 
 	
 - Search books by keyword ( optional offset / limit ):
+
 		/books/search/{keyword} 
 		/books/search/{keyword}/{offset}/{limit}
 	
@@ -144,9 +151,9 @@ Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
 			                         
 			), $this->config);
 
-Notable: \Elastest\Cache\TempFileCache.class.php
+Notable: in api/v1.0/Cache/TempFileCache.class.php
 
-The method used for caching is faster than Redis, Memcache, APC, and other PHP caching solutions because all those solutions must serialize and unserialize objects, generally using PHP’s serialize or json_encode functions. 
+The method used for caching in tmp files is faster than Redis, Memcache, APC, and other PHP caching solutions because all those solutions must serialize and unserialize objects, generally using PHP’s serialize or json_encode functions. 
 By storing PHP objects - not string - in file cache memory across requests, we can avoid serialization completely.
 
 
@@ -208,3 +215,54 @@ ResourceController.class.php
 				// Send the response object ( $ElastestAPI->handleHttpRequest(  HttpRequest::buildRequestFromGlobals()  )->send(); )
 
 		}
+
+
+## Autoload
+
+The autoloader function is in /name_of_your_choice/api/v1.0/development.php and /name_of_your_choice/api/v1.0/production.php 
+
+		function loadClassWithNamespaces(?string $className) : void {}
+	
+It is then registered with:
+
+		spl_autoload_register('loadClassWithNamespaces');    
+
+## Structure
+
+I use the api/v1.0/, api/v2.0/, etc.. structure to easily switch to a different version of the api. Modify it in .htaccess:
+
+		RewriteRule ^(.*)$  api/v1.0/index.php?request=$1 [QSA,NC,L]
+		RewriteRule ^(.*)/$ api/v1.0/index.php?request=$1 [QSA,NC,L]
+
+The directories structure of the api is the following:
+
+/name_of_your_choice/
+
+/name_of_your_choice/api/  
+
+/name_of_your_choice/api/v1.0/ 								-> namespace elastest
+
+/name_of_your_choice/api/v1.0/Api    					-> namespace Elastest\Api
+/name_of_your_choice/api/v1.0/Cache  					-> namespace Elastest\Cache
+/name_of_your_choice/api/v1.0/Config  				-> namespace Elastest\Config
+/name_of_your_choice/api/v1.0/Controllers  		-> namespace Elastest\Controllers
+/name_of_your_choice/api/v1.0/Exceptions  		-> namespace Elastest\Exceptions
+/name_of_your_choice/api/v1.0/Http  					-> namespace Elastest\Http
+/name_of_your_choice/api/v1.0/ResourceTypes  	-> namespace Elastest\ResourceTypes
+/name_of_your_choice/api/v1.0/Storage        	-> namespace Elastest\Storage
+
+## Errors
+
+Modify the errors directory path in /name_of_your_choice/api/v1.0/development.php and /name_of_your_choice/api/v1.0/production.php 
+
+		/** PHP ERRORS  ***/
+		if(DEBUG){
+			error_reporting(E_ALL);
+		} else {
+			error_reporting(E_ALL^E_WARNING^E_NOTICE);
+		}
+
+		ini_set("display_errors", 1);
+		ini_set("log_errors", 1);
+		ini_set("error_log", "Path/To/Errors/Directory/php-errors.log");
+		  
