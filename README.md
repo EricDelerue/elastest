@@ -237,6 +237,7 @@ The directories structure of the api is the following:
 /name_of_your_choice/
 
 /name_of_your_choice/cache/ 								  -> will contain the cached responses 
+
 /name_of_your_choice/errors/ 								  -> will contain the errors log file 
   
 /name_of_your_choice/api/  
@@ -244,12 +245,19 @@ The directories structure of the api is the following:
 /name_of_your_choice/api/v1.0/ 								-> namespace Elastest
 
 /name_of_your_choice/api/v1.0/Api    					-> namespace Elastest\Api
+
 /name_of_your_choice/api/v1.0/Cache  					-> namespace Elastest\Cache
+
 /name_of_your_choice/api/v1.0/Config  				-> namespace Elastest\Config
+
 /name_of_your_choice/api/v1.0/Controllers  		-> namespace Elastest\Controllers
+
 /name_of_your_choice/api/v1.0/Exceptions  		-> namespace Elastest\Exceptions
+
 /name_of_your_choice/api/v1.0/Http  					-> namespace Elastest\Http
+
 /name_of_your_choice/api/v1.0/ResourceTypes  	-> namespace Elastest\ResourceTypes
+
 /name_of_your_choice/api/v1.0/Storage        	-> namespace Elastest\Storage
 
 ## Errors
