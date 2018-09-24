@@ -69,7 +69,7 @@ Modify the configuration file with your values in:
 
     /name_of_your_choice/api/elastest.api.v1.0.ini.php
 
-Create a database called: `elastest` and execute the following sql file inside it:
+Create a database called: `elastest` and import/execute the following sql file:
 
     /name_of_your_choice/elastest.sql 
     
@@ -77,7 +77,7 @@ Test the script by opening the following URL:
 
     http://localhost/name_of_your_choice/books/list or http://your.web.server/name_of_your_choice/books/list
 
-## .htaccess
+## Routing with .htaccess
 
 The request $_REQUEST['request'] contains endpoint/id or endpoint/verb/ or endpoint/search/keyword/
 
@@ -131,8 +131,6 @@ Open these two files and modify with your values:
 		/name_of_your_choice/api/v1.0/production.php
 
 
-
-
 ## Cache
 
 Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
@@ -142,7 +140,7 @@ Edit the following lines in the file "/api/v1.0/Api/ElastestAPI.class.php":
 			    'csrf_token' => false,
 			    
 			    'cache' => true,     		    
-			    'cache_type' => "TempFile" (default) or "Memcache" or "Memcached",
+			    'cache_type' => TempFile or No,
 			    'cache_timeout' => 10,
 			    'cache_path' => C:\Path\To\Your\Cache\Directory\cache, 		
 			    	    
@@ -238,9 +236,12 @@ The directories structure of the api is the following:
 
 /name_of_your_choice/
 
+/name_of_your_choice/cache/ 								  -> will contain the cached responses 
+/name_of_your_choice/errors/ 								  -> will contain the errors log file 
+  
 /name_of_your_choice/api/  
 
-/name_of_your_choice/api/v1.0/ 								-> namespace elastest
+/name_of_your_choice/api/v1.0/ 								-> namespace Elastest
 
 /name_of_your_choice/api/v1.0/Api    					-> namespace Elastest\Api
 /name_of_your_choice/api/v1.0/Cache  					-> namespace Elastest\Cache
