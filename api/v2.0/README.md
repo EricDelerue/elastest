@@ -140,7 +140,7 @@ These are the main configuration options and their default value:
 - db_socket = 
 
 [production_url_info]
-- api_base_url = https://ericdelerue.com/elastest
+- api_base_url = https://ericdelerue.com/elastique
 - api_base_directory = /api/
 - api_base_version = v2.0
 
@@ -171,7 +171,7 @@ index.php
 Head of the API
 
 		$API = new ElastestAPI($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
-    echo str_replace('\\/', '/', $API->processAPI());
+		echo str_replace('\\/', '/', $API->processAPI());
 
 The declaration of class ElastestAPI extends API {} is in index.php
 	
