@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Elastest - September 2018
  * Assignment from Elastique: Build a RESTful API (ref.: Assignment Backend - Elastique.pdf)
@@ -70,7 +69,7 @@ class Pdo implements BooksInterface,
 				    ), $connection);    
 				                                                                                                                                   
 				    $connection = new \PDO($connection['dsn'], $connection['username'], $connection['password'], $connection['options']);    
-				    $connection->exec("set names utf8");                          
+				    $connection->exec("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");                          
 				}          
 	                                                                                                                                            
 				$this->connection = $connection;                                                                                                                               

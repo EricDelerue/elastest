@@ -88,6 +88,31 @@ INSERT INTO `publishers` (`id`, `name`) VALUES
 (1, 'Elastique'),
 (2, 'Ink salad');
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `applications`
+--
+
+CREATE TABLE `applications` (
+  `application_id` int(11) NOT NULL,
+  `application_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `application_key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `application_secret` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `application_origin` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `application_is_active` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Applications / Clients Public / Secret keys table';
+
+--
+-- Dump dei dati per la tabella `applications`
+--
+
+INSERT INTO `applications` (`application_id`, `application_name`, `application_key`, `application_secret`, `application_origin`, `application_is_active`) VALUES
+(1, 'elastique', '64b62cf8af12ef490b37323027220cfbe7825f7f86bac7470afb131c5af22819', 'da254b2fa2eb38ce155b326792e5bc6df750110d8dcc389a007a58404af0c372', '127.0.0.1', -1);
+
+-- --------------------------------------------------------
+
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -111,6 +136,12 @@ ALTER TABLE `publishers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `applications`
+--
+ALTER TABLE `applications`
+  ADD PRIMARY KEY (`application_id`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -131,6 +162,13 @@ ALTER TABLE `books`
 --
 ALTER TABLE `publishers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+--
+-- AUTO_INCREMENT per la tabella `applications`
+--
+ALTER TABLE `applications`
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
