@@ -34,8 +34,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # L means if the rule matches, don't process any more RewriteRules below this one.
 # Use of the [NC] flag causes the RewriteRule to be matched in a case-insensitive manner.
 
-RewriteRule ^(.*)$  api/v1.0/index.php?request=$1 [QSA,NC,L]
-RewriteRule ^(.*)/$ api/v1.0/index.php?request=$1 [QSA,NC,L]
+#RewriteRule ^(.*)$  api/v1.0/index.php?request=$1 [QSA,NC,L]
+#RewriteRule ^(.*)/$ api/v1.0/index.php?request=$1 [QSA,NC,L]
+
+RewriteRule ^(.*)$  api/v2.0/index.php?request=$1 [QSA,NC,L]
+RewriteRule ^(.*)/$ api/v2.0/index.php?request=$1 [QSA,NC,L]
 
 </IfModule>
 
