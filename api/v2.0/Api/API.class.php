@@ -127,12 +127,12 @@ abstract class API {
 				$test_public_key = trim(fgets($fh));
 				fclose($fh);
 				//echo "public_key ".$public_key."\n<br>";
-				
+
 				$fh = fopen(DIR_KEYS . "secret.key","r");
         $test_secret_key = trim(fgets($fh));
         fclose($fh);
-        //echo "secret_key ".$secret_key."\n<br>";		
-        
+        //echo "test_secret_key ".$test_secret_key."\n<br>";	
+
         $test_prefix = "elastest_";
 				$test_state = uniqid($test_prefix);    
 				
@@ -427,18 +427,27 @@ abstract class API {
     
     }
 		
-		private function createCSRFToken(){ 
-			
-      // mcrypt_encrypt: deprecated and removed from PHP 7.2
-			//$this->csrf_token = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->Application->getAppSecret(), $state, MCRYPT_MODE_ECB));
-			
-	    if (function_exists('mcrypt_create_iv')) {
-	        $csrf_token = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
-	    } else {
-	        $csrf_token = bin2hex(openssl_random_pseudo_bytes(32));
-	    }
+		private function createCSRFToken(int $length = 32) : string { 
+				
+	      // mcrypt_encrypt: deprecated and removed from PHP 7.2
+				//$this->csrf_token = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->Application->getAppSecret(), $state, MCRYPT_MODE_ECB));
 
-      return $csrf_token;
+		    if(!isset($length) || intval($length) <= 8 ){
+		      	$length = 32;
+		    }
+		    
+		    if (function_exists('random_bytes')) {
+		        return bin2hex(random_bytes($length));
+		    }
+		    
+		    if (function_exists('mcrypt_create_iv')) {
+		        return bin2hex(mcrypt_create_iv($length, MCRYPT_DEV_URANDOM));
+		    } 
+		    
+		    if (function_exists('openssl_random_pseudo_bytes')) {
+		        return bin2hex(openssl_random_pseudo_bytes($length));
+		    }
+
     } 
 
 		private function _getmicrotime(){ 

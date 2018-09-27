@@ -10,23 +10,23 @@ if(DEBUG){
 
 ini_set("display_errors", "1");
 ini_set("log_errors", 1);
-ini_set("error_log", "/var/www/html/elastique/logs/elastest.api.v2.0.errors.log");
+ini_set("error_log", "/var/www/html/dev.ericdelerue.com/elastique/logs/elastest.api.v2.0.errors.log");
 
-define("LOG_FILE","/var/www/html/elastique/logs/elastest.api.v2.0.errors.log");
+define("LOG_FILE","/var/www/html/dev.ericdelerue.com/elastique/logs/elastest.api.v2.0.errors.log");
 
 
 date_default_timezone_set('UTC');
   
-define('DIR_CLASSES', str_replace('\\','/',dirname(__FILE__))); // /var/www/html/dev.ericdelerue.com/elastique/api/v2.0
+define('DIR_CLASSES', str_replace('\\','/',dirname(__FILE__))); //  /var/www/html/dev.ericdelerue.com/elastique/api/v2.0
 //echo "DIR_CLASSES: ".DIR_CLASSES."<br>\n"; 
 
-define('DIR_API', DIR_CLASSES . DIRECTORY_SEPARATOR . 'Api'); // /var/www/html/dev.ericdelerue.com/elastique/api/v2.0
+define('DIR_API', DIR_CLASSES . DIRECTORY_SEPARATOR . 'Api'); // /var/www/html/dev.ericdelerue.com/elastique/api/v2.0/Api
 //echo "DIR_API: ".DIR_API."<br>\n"; 
   
 define('DIR_ELASTEST', DIR_CLASSES . DIRECTORY_SEPARATOR . 'Elastest'); // /var/www/html/dev.ericdelerue.com/elastique/api/v2.0/Elastest
 //echo "DIR_ELASTEST: ".DIR_ELASTEST."<br>\n"; 
 
-define('ROOT_URI', $_SERVER['DOCUMENT_ROOT'].'/elastique/');  // /var/www/html/dev.ericdelerue.com/elastique/
+define('ROOT_URI', $_SERVER['DOCUMENT_ROOT'].'elastique/');  // /var/www/html/dev.ericdelerue.com/elastique/
 //echo "ROOT_URI: ".ROOT_URI."<br>\n";
 
 define('DIR_ERRORS', ROOT_URI.'logs/');  // /var/www/html/dev.ericdelerue.com/elastique/logs/
@@ -41,3 +41,7 @@ define('PUBLIC_URL', 'http://dev.ericdelerue.com/elastique/');
 ini_set( "SMTP", "mail.ericdelerue.com" ); // ericdelerue.com
 ini_set( "smtp_port", "25" );  
 ini_set('sendmail_from', 'me@ericdelerue.com');
+
+
+
+require_once("autoloader.php");
