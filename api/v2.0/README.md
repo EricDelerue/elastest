@@ -140,7 +140,7 @@ These are the main configuration options and their default value:
 - db_socket = 
 
 [production_url_info]
-- api_base_url = https://ericdelerue.com/elastique
+- api_base_url = https://dev.ericdelerue.com/elastique
 - api_base_directory = /api/
 - api_base_version = v2.0
 
@@ -156,7 +156,12 @@ No cache implemented in this version. See version one.
 
 ## Autoload
 
-The autoloader function is in /name_of_your_choice/api/v2.0/autoloader.php and is included in /name_of_your_choice/api/v2.0/development.php and /name_of_your_choice/api/v1.0/production.php 
+The autoloader function is in /name_of_your_choice/api/v2.0/autoloader.php and is included in 
+
+		/name_of_your_choice/api/v2.0/development.php  
+		/name_of_your_choice/api/v1.0/production.php 
+
+The autoloader function is called
 
 		function classLoader($class_name) : void {}
 	
@@ -185,11 +190,10 @@ To that extent, the abstract class will:
 - detect the HTTP method (GET, POST, PUT, DELETE) and 
 - assemble any additional data provided in the header or in the URI. 
  
-2 Once that's done, the abstract class will pass the request information on to a method in the concrete class ElastestAPI to actually perform the work. 
+2 Once that's done, the abstract class will pass the request information on to a method in the concrete class ElastestAPI to actually perform the work. The concrete ElastestAPI class then calls the classes Books, Authors and Publishers respectively in Elastest/Books.class.php, Elastest/Authors.class.php, Elastest/Publishers.class.php
 
 3 We then return to the abstract class which will handle forming a HTTP response back to the client.
 
-The ElastestAPI class then calls the classes Books, Authors and Publishers respectively in Elastest/Books.class.php, Elastest/Authors.class.php, Elastest/Publishers.class.php
 
 ## Structure
 
