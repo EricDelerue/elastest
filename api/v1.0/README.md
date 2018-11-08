@@ -1,6 +1,6 @@
 # elastest (solution one)
 
-- *Elastique REST API test v1*
+- *Simple RESTful API v1.0*
 - *September 2018*
 - *Eric Delerue delerue_eric@hotmail.com*
 - *https://github.com/EricDelerue/elastest*
@@ -13,11 +13,11 @@ This RESTful API allows the user to
 - search through all books by KEYWORD
 - and get a specific book, author or publisher by ID
 
-Enpoints
+## Enpoints
 
 The following enpoints are available:
 
-Publishers 
+### Publishers 
 
 - All publishers:
 
@@ -27,7 +27,7 @@ Publishers
 
 		/publishers/{id}
 	
-Authors 
+### Authors 
 
 - All authors:
 
@@ -37,7 +37,7 @@ Authors
 
 		/authors/{id}
 
-Books 
+### Books 
 
 - All featured/highlighted items:
 
